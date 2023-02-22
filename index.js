@@ -18,8 +18,6 @@ mongoose.connect(process.env.MONGODB_URI)
 
 const app = express()
 
-const hostname = "0.0.0.0";
-
 app.use(express.json()); 
 app.use(cookieParser());
 
@@ -64,5 +62,5 @@ app.listen(process.env.PORT || PORT, (err) => {
     if (err) {
         return console.log(err);
     }
-    console.log(`server running on ${hostname} OK`);
+    console.log(`server OK`);
 });
