@@ -6,8 +6,8 @@ import cookieParser from "cookie-parser";
 import cors from 'cors';
 import { answer, createQuestion, createSurvey, deleteQuestion, editQuestion, editSurvey, getAllSurveys, getOneSurvey, getQList } from "./controllers/SurveyController.js";
 import { login, logout, refresh, register } from "./controllers/TokioUserController.js";
-import { authMiddleware } from './middlewares/authMiddleware.js';
-import { roleMiddleWare } from './middlewares/roleMiddleWare.js';
+//import { authMiddleware } from './middlewares/authMiddleware.js';
+//import { roleMiddleWare } from './middlewares/roleMiddleWare.js';
 
 const PORT = 4444;
 
@@ -21,7 +21,13 @@ const app = express()
 app.use(express.json()); 
 app.use(cookieParser());
 
-app.use(cors());
+app.use(cors({
+    credentials: true,
+    origin: true, 
+    allowedHeaders:  ['Content-Type', 'Authorization'],
+    methods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE', 'HEAD'],
+    preflightContinue: true,
+}));
 
 
 // getQList();
